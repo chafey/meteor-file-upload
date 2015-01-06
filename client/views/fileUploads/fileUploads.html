@@ -1,0 +1,35 @@
+<template name="fileUploads">
+
+    <div>
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th class="col-md-2">Id</th>
+                <th class="col-md-3">Name</th>
+                <th class="col-md-3">Type</th>
+                <th class="col-md-1">Size</th>
+                <th class="col-md-4">Uploaded</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each fileUploads}}
+                <tr >
+                    <th>{{_id}}</th>
+                    <th>{{original.name}}</th>
+                    <th>{{original.type}}</th>
+                    <th>{{original.size}}</th>
+                    <th>
+                        {{#unless this.isUploaded}}
+                        {{> FS.UploadProgressBar}}
+                        {{/unless}}
+                        {{#if this.isUploaded }}
+                        {{> FS.DeleteButton class="btn btn-danger btn-xs"}}
+                        {{/if}}
+                    </th>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</template>
